@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D3 Treemap Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .node {
+            box-sizing: border-box;
+        }
+        .node rect {
+            transition: fill 0.3s, filter 0.3s; 
+        }
+        .node:hover rect {
+            fill: #ff6347; 
+            filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.5)); 
+        }
+        text {
+            pointer-events: none;
+            font-size: 12px;
+            fill: #000;
+            dominant-baseline: hanging; /* Align text to the top */
+        }
+    </style>
+</head>
+<body>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script>
+        // Sample data with cost
+        const data = {
+            "name": "root",
+            "children": [
+                {"name": "Alice Johnson", "value": 100},
+                {"name": "Bob Smith", "value": 200},
+                {"name": "Carol Davis", "value": 150},
+                {"name": "David Wilson", "value": 250},
+                {"name": "Eva Brown", "value": 180},
+                {"name": "Frank Miller", "value": 120}
+            ]
+        };
+
+        const width = 960;
+        const height = 600;
+
+        // Define quad colors
+        const pastelColors = [
+            "#f7c6c7", 
+            "#f6c6ea", 
+            "#c6e3f7", 
+            "#e3f7c6", 
+            "#f7f6c6", 
+            "#c6f7c9"  
+        ];
+
+        const color = d3.scaleOrdinal(pastelColors);
+
+        const treemap = d3.treemap()
+            .size([width, height])
+            .padding(2);
+
+        const root = d3.hierarchy(data)
+            .sum(d => d.value);
+
+        treemap(root);
+
+        const svg = d3.select("body").append("svg")
+            .attr("width", width)
+            .attr("height", height);
+
+        const node = svg.selectAll(".node")
+            .data(root.leaves())
+            .enter().append("g")
+            .attr("class", "node")
+            .attr("transform", d => `translate(${d.x0},${d.y0})`);
+
+        node.append("rect")
+            .attr("id", d => d.data.name.replace(/\s+/g, '_'))  
+            .attr("width", d => d.x1 - d.x0)
+            .attr("height", d => d.y1 - d.y0)
+            .style("fill", d => color(d.data.name))
+            .style("stroke", "#fff");
+
+        node.append("text")
+            .attr("x", 5)  
+            .attr("y", 5)  
+            .text(d => d.data.name)
+            .attr("font-size", "12px")
+            .attr("fill", "#000")
+            .attr("dominant-baseline", "hanging");  
+    </script>
+</body>
+</html>
