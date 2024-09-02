@@ -32,7 +32,8 @@ To run this project locally, follow these steps:
    Start a local development server to view the project:
    ```bash
    npm start
-   The application will be available at **`http://localhost:3000`**.
+
+The application will be available at **`http://localhost:3000`**
 
 ## Usage
 
@@ -57,9 +58,4 @@ This project uses hierarchical JSON data for the treemap. Ensure your data follo
      ]
    }
 
-## License
-This project is licensed under the MIT License. See the LICENSE file for details.
-
-## Contact
-For questions or feedback, please contact jenzhng.
 
