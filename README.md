@@ -54,7 +54,6 @@ This project uses hierarchical JSON data for the treemap. Ensure your data follo
          "name": "B",
          "size": 200
        }
-       // More nodes...
      ]
    }
 
