@@ -37,8 +37,8 @@ The application will be available at **`http://localhost:3000`**
 
 ## Usage
 
-Open the Application: Navigate to **`http://localhost:3000`** in your web browser to view the treemap visualization.
-Interact with the Treemap: Hover over different rectangles to see them highlighted and explore the hierarchical data representation.
+1. Open the Application: Navigate to **`http://localhost:3000`** in your web browser to view the treemap visualization.
+2. Interact with the Treemap: Hover over different rectangles to see them highlighted and explore the hierarchical data representation.
 
 ## Data Format
 
