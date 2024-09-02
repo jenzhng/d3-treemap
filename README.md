@@ -35,25 +35,29 @@ To run this project locally, follow these steps:
    The application will be available at **`http://localhost:3000`**.
 
 ## Usage
+
 Open the Application: Navigate to **`http://localhost:3000`** in your web browser to view the treemap visualization.
 Interact with the Treemap: Hover over different rectangles to see them highlighted and explore the hierarchical data representation.
+
 ## Data Format
+
 This project uses hierarchical JSON data for the treemap. Ensure your data follows this structure:
-```json
-{
-  "name": "root",
-  "children": [
-    {
-      "name": "A",
-      "size": 100
-    },
-    {
-      "name": "B",
-      "size": 200
-    }
-    // More nodes...
-  ]
-}
+   ```json
+   {
+     "name": "root",
+     "children": [
+       {
+         "name": "A",
+         "size": 100
+       },
+       {
+         "name": "B",
+         "size": 200
+       }
+       // More nodes...
+     ]
+   }
+
 ## License
 This project is licensed under the MIT License. See the LICENSE file for details.
 ## Contact
